@@ -1,0 +1,9 @@
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\bin\Debug\netcoreapp3.1\Projeto.Infra.Data.deps.json
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\bin\Debug\netcoreapp3.1\Projeto.Infra.Data.dll
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\bin\Debug\netcoreapp3.1\Projeto.Infra.Data.pdb
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\obj\Debug\netcoreapp3.1\Projeto.Infra.Data.csprojAssemblyReference.cache
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\obj\Debug\netcoreapp3.1\Projeto.Infra.Data.AssemblyInfoInputs.cache
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\obj\Debug\netcoreapp3.1\Projeto.Infra.Data.AssemblyInfo.cs
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\obj\Debug\netcoreapp3.1\Projeto.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\obj\Debug\netcoreapp3.1\Projeto.Infra.Data.dll
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Infra.Data\obj\Debug\netcoreapp3.1\Projeto.Infra.Data.pdb

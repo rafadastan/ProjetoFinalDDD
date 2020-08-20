@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Projeto.Presentation.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger"
+    }
+  }
+}
