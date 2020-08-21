@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projeto.Domain.Contracts.Repositories
 {
-    interface ITurmaRepository : IBaseRepository<Turma>
+    public interface ITurmaRepository : IBaseRepository<Turma>
     {
     }
 }
