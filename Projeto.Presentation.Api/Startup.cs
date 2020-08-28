@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Projeto.Infra.Data.Contexts;
+using Projeto.Infra.Data.Contracts;
+using Projeto.Infra.Data.Repositories;
 
 namespace Projeto.Presentation.Api
 {
@@ -43,6 +47,16 @@ namespace Projeto.Presentation.Api
                     }
                 };
             });
+            #endregion
+
+            #region EntityFramework
+            services.AddDbContext<DataContext>
+                (options => options.UseSqlServer(
+                    Configuration.GetConnectionString("ProjetoFinal")));
+            #endregion
+
+            #region UnitOfWork
+            services.AddTransient<IUnitOfWork,UnitOfWork>();
             #endregion
         }
 
