@@ -31,5 +31,68 @@ namespace Projeto.Presentation.Api.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+
+        [HttpPut]
+        public IActionResult Put(AlunoEdicaoModel model,
+            [FromServices] IAlunoApplicationService alunoApplicationService)
+        {
+            try
+            {
+                alunoApplicationService.Update(model);
+                //retornar status de atualizado 200 (OK)
+                return Ok("Plano cadastrado com sucesso.");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id,
+            [FromServices] IAlunoApplicationService alunoApplicationService)
+        {
+            try
+            {
+                alunoApplicationService.Delete(id);
+                //retornar status de sucesso 200 (OK)
+                return Ok("Plano cadastrado com sucesso.");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult GetAll(
+            [FromServices] IAlunoApplicationService alunoApplicationService)
+        {
+            try
+            {
+                //retornar status de sucesso 200 (OK)
+                return Ok(alunoApplicationService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id,
+            [FromServices] IAlunoApplicationService alunoApplicationService)
+        {
+            try
+            {
+                //retornar status de sucesso 200 (OK)
+                return Ok(alunoApplicationService.GetById(id));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
     }
 }
