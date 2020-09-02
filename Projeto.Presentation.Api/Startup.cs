@@ -11,6 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Projeto.Application.Contracts;
+using Projeto.Application.Services;
+using Projeto.Domain.Contracts.Repositories;
+using Projeto.Domain.Contracts.Services;
+using Projeto.Domain.Services;
 using Projeto.Infra.Data.Contexts;
 using Projeto.Infra.Data.Contracts;
 using Projeto.Infra.Data.Repositories;
@@ -32,13 +37,15 @@ namespace Projeto.Presentation.Api
             services.AddControllers();
 
             #region SWAGGER
+            //configurando a documentação da API gerada pelo swagger
             services.AddSwaggerGen(s =>
             {
                 new OpenApiInfo
                 {
-                    Title = "Api de Gerenciamento de Escolas",
+                    Title = "API de controle de escolas e cursos",
                     Version = "v1",
-                    Description = "Sistema de gerenciamento de escolas Api, arquitetura DDD",
+                    Description = "Sistema desenvolvido em NET CORE API com arquitetura DDD(Domain Driven Design)",
+        
                     Contact = new OpenApiContact
                     {
                         Name = "COTI Informática",
@@ -56,7 +63,28 @@ namespace Projeto.Presentation.Api
             #endregion
 
             #region UnitOfWork
-            services.AddTransient<IUnitOfWork,UnitOfWork>();
+            // services.AddTransient<IUnitOfWork,UnitOfWork>();
+            #endregion
+
+            #region Injeção de Dependencia
+
+            services.AddTransient<IAlunoApplicationService, AlunoApplicationService>();
+            services.AddTransient<IMatriculaApplicationService, MatriculaApplicationService>();
+            services.AddTransient<IProfessorApplicationService, ProfessorApplicationService>();
+            services.AddTransient<ITurmaApplicationService, TurmaApplicationService>();
+
+            services.AddTransient<IAlunoDomainService, AlunoDomainService>();
+            services.AddTransient<IMatriculaDomainService, MatriculaDomainService>();
+            services.AddTransient<IProfessorDomainService, ProfessorDomainService>();
+            services.AddTransient<ITurmaDomainService, TurmaDomainService>();
+
+            services.AddTransient<IAlunoRepository, AlunoRepository>();
+            services.AddTransient<IMatriculaRepository, MatriculaRepository>();
+            services.AddTransient<IProfessorRepository, ProfessorRepository>();
+            services.AddTransient<ITurmaRepository, TurmaRepository>();
+
+            //services.AddTransient<IMD5Cryptography, MD5Cryptography>();
+
             #endregion
         }
 
@@ -74,11 +102,13 @@ namespace Projeto.Presentation.Api
 
             #region Swagger
             app.UseSwagger();
-            app.UseSwaggerUI(s=> s.SwaggerEndpoint("/swagger/v1/swagger.json", "apiescola"));
+
+            app.UseSwaggerUI(s => s.SwaggerEndpoint
+            ("/swagger/v1/swagger.json", "apicotiescola"));
             #endregion
 
             app.UseEndpoints(endpoints =>
-            {
+            {   
                 endpoints.MapControllers();
             });
         }
