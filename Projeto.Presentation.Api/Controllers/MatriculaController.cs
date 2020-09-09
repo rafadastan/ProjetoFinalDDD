@@ -6,25 +6,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.Contracts;
 using Projeto.Application.Models;
-using Projeto.Application.Services;
-using Projeto.Infra.Data.Contracts;
 
 namespace Projeto.Presentation.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunoController : ControllerBase
+    public class MatriculaController : ControllerBase
     {
- 
         [HttpPost]
-        public IActionResult Post(AlunoCadastroModel model,
-            [FromServices] IAlunoApplicationService alunoApplicationService)
+        public IActionResult Post(MatriculaCadastroModel model,
+            [FromServices] IMatriculaApplicationService matriculaApplicationService)
         {
             try
             {
-                alunoApplicationService.Insert(model); 
-                //retornar status de sucesso 200 (OK)
-                return Ok("Aluno cadastrado com sucesso.");
+                matriculaApplicationService.Insert(model);
+                return Ok("Matricula Cadastrado com sucesso!");
             }
             catch (Exception e)
             {
@@ -33,14 +29,13 @@ namespace Projeto.Presentation.Api.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(AlunoEdicaoModel model,
-            [FromServices] IAlunoApplicationService alunoApplicationService)
+        public IActionResult Put(MatriculaEdicaoModel model,
+            [FromServices] IMatriculaApplicationService matriculaApplicationService)
         {
             try
             {
-                alunoApplicationService.Update(model);
-                //retornar status de atualizado 200 (OK)
-                return Ok("Aluno atualizado com sucesso.");
+                matriculaApplicationService.Update(model);
+                return Ok("Matricula Atualizado com sucesso!");
             }
             catch (Exception e)
             {
@@ -50,28 +45,25 @@ namespace Projeto.Presentation.Api.Controllers
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id,
-            [FromServices] IAlunoApplicationService alunoApplicationService)
+            [FromServices] IMatriculaApplicationService matriculaApplicationService)
         {
             try
             {
-                alunoApplicationService.Delete(id);
-                //retornar status de sucesso 200 (OK)
-                return Ok("Aluno deletado com sucesso.");
+                matriculaApplicationService.Delete(id);
+                return Ok("Matricula deletado com sucesso!");
             }
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
         }
-
+        
         [HttpGet]
-        public IActionResult GetAll(
-            [FromServices] IAlunoApplicationService alunoApplicationService)
+        public IActionResult GetAll([FromServices] IMatriculaApplicationService matriculaApplicationService)
         {
             try
             {
-                //retornar status de sucesso 200 (OK)
-                return Ok(alunoApplicationService.GetAll());
+                return Ok(matriculaApplicationService.GetAll());
             }
             catch (Exception e)
             {
@@ -81,18 +73,16 @@ namespace Projeto.Presentation.Api.Controllers
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id,
-            [FromServices] IAlunoApplicationService alunoApplicationService)
+            [FromServices] IMatriculaApplicationService matriculaApplicationService)
         {
             try
             {
-                //retornar status de sucesso 200 (OK)
-                return Ok(alunoApplicationService.GetById(id));
+                return Ok(matriculaApplicationService.GetById(id));
             }
             catch (Exception e)
             {
                 return StatusCode(500, e.Message);
             }
         }
-
     }
 }
