@@ -11,17 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain", "3. Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. InfraStructure", "4. InfraStructure", "{7E4DDECA-14D7-4110-A6BD-BB6B1020CF3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.Domain", "Projeto.Domain\Projeto.Domain.csproj", "{8E1F69C0-7915-4A27-A98A-BCF2EB106C36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto.Domain", "Projeto.Domain\Projeto.Domain.csproj", "{8E1F69C0-7915-4A27-A98A-BCF2EB106C36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.Presentation.Api", "Projeto.Presentation.Api\Projeto.Presentation.Api.csproj", "{1A8E6BDB-94FA-4DA9-BE20-84943717C5F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto.Presentation.Api", "Projeto.Presentation.Api\Projeto.Presentation.Api.csproj", "{1A8E6BDB-94FA-4DA9-BE20-84943717C5F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.Application", "Projeto.Application\Projeto.Application.csproj", "{990EB386-5CB4-4BBC-AA4F-63893B75FA43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto.Application", "Projeto.Application\Projeto.Application.csproj", "{990EB386-5CB4-4BBC-AA4F-63893B75FA43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. CrossCutting", "5. CrossCutting", "{90B8FE28-80F8-4B44-9EB1-101446199024}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.Infra.Data", "Projeto.Infra.Data\Projeto.Infra.Data.csproj", "{66CC8518-EAA8-4A4A-9BC1-0677AE7EEA55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto.Infra.Data", "Projeto.Infra.Data\Projeto.Infra.Data.csproj", "{66CC8518-EAA8-4A4A-9BC1-0677AE7EEA55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto.CrossCutting", "Projeto.CrossCutting\Projeto.CrossCutting.csproj", "{7334FB42-1672-44FF-A85A-6CBCECF8A6F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Projeto.CrossCutting", "Projeto.CrossCutting\Projeto.CrossCutting.csproj", "{7334FB42-1672-44FF-A85A-6CBCECF8A6F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Test", "6. Test", "{6E4BD9A6-E116-43AB-8EE6-D36ABE466435}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7. Automated Testing", "7. Automated Testing", "{7071FF5F-8039-4075-A5E5-E77792F645BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

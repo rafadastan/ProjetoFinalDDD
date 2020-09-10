@@ -7,7 +7,7 @@ namespace Projeto.Domain.Contracts.Repositories
 {
     public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
-        Usuario GetByLogin();
+        Usuario GetByLogin(string login);
         Usuario GetByLoginAndPassword(string login, string password);
     }
 }

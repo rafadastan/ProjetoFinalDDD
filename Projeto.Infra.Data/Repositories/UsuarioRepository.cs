@@ -3,6 +3,7 @@ using Projeto.Domain.Entities;
 using Projeto.Infra.Data.Contexts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Projeto.Infra.Data.Repositories
@@ -16,14 +17,16 @@ namespace Projeto.Infra.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public Usuario GetByLogin()
+        public Usuario GetByLogin(string login)
         {
-            throw new NotImplementedException();
+            return dataContext.Usuario
+                .FirstOrDefault(u=> u.Login.Equals(login));
         }
 
         public Usuario GetByLoginAndPassword(string login, string password)
         {
-            throw new NotImplementedException();
+            return dataContext.Usuario
+                .FirstOrDefault(u => u.Login.Equals(login) && u.Senha.Equals(password));
         }
     }
 }

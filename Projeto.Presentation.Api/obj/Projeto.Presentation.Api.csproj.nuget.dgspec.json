@@ -82,7 +82,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Raphael\\Documents\\Projetos\\ProjetoFinal\\Projeto.Domain\\Projeto.Domain.csproj": {
+                "projectPath": "C:\\Users\\Raphael\\Documents\\Projetos\\ProjetoFinal\\Projeto.Domain\\Projeto.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

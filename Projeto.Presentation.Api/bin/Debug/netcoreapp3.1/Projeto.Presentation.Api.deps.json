@@ -1334,6 +1334,9 @@
         }
       },
       "Projeto.CrossCutting/1.0.0": {
+        "dependencies": {
+          "Projeto.Domain": "1.0.0"
+        },
         "runtime": {
           "Projeto.CrossCutting.dll": {}
         },

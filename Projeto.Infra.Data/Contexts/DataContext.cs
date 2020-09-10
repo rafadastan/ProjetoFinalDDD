@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Projeto.Domain;
+using Projeto.Domain.Entities;
 using Projeto.Infra.Data.Mappings;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Projeto.Infra.Data.Contexts
         public DbSet<Matricula> Matricula { get; set; }
         public DbSet<Professor> Professor { get; set; }
         public DbSet<Turma> Turma { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +27,7 @@ namespace Projeto.Infra.Data.Contexts
             modelBuilder.ApplyConfiguration(new MatriculaMap());
             modelBuilder.ApplyConfiguration(new ProfessorMap());
             modelBuilder.ApplyConfiguration(new TurmaMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
 
             modelBuilder.Entity<Aluno>(entity =>
             {
@@ -36,7 +39,10 @@ namespace Projeto.Infra.Data.Contexts
                 entity.HasIndex(a => a.Cpf).IsUnique();
             });
 
-
+            modelBuilder.Entity<Usuario>(entity=>
+            {
+                entity.HasIndex(u => u.Login).IsUnique();
+            });
         }
     }
 }

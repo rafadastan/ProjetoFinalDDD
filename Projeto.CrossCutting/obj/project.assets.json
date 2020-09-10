@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Projeto.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Projeto.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Projeto.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Projeto.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Projeto.Domain/Projeto.Domain.csproj",
+      "msbuildProject": "../Projeto.Domain/Projeto.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Projeto.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Raphael\\.nuget\\packages\\": {}
@@ -32,7 +51,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Raphael\\Documents\\Projetos\\ProjetoFinal\\Projeto.Domain\\Projeto.Domain.csproj": {
+              "projectPath": "C:\\Users\\Raphael\\Documents\\Projetos\\ProjetoFinal\\Projeto.Domain\\Projeto.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
