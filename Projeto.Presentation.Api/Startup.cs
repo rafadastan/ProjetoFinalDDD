@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Projeto.Application.Contracts;
 using Projeto.Application.Services;
+using Projeto.CrossCutting.CrossCuttings;
+using Projeto.Domain.Contracts.CrossCutting;
 using Projeto.Domain.Contracts.Repositories;
 using Projeto.Domain.Contracts.Services;
 using Projeto.Domain.Services;
@@ -72,18 +74,21 @@ namespace Projeto.Presentation.Api
             services.AddTransient<IMatriculaApplicationService, MatriculaApplicationService>();
             services.AddTransient<IProfessorApplicationService, ProfessorApplicationService>();
             services.AddTransient<ITurmaApplicationService, TurmaApplicationService>();
+            services.AddTransient<IUsuarioApplicationService, UsuarioApplicationService>();
 
             services.AddTransient<IAlunoDomainService, AlunoDomainService>();
             services.AddTransient<IMatriculaDomainService, MatriculaDomainService>();
             services.AddTransient<IProfessorDomainService, ProfessorDomainService>();
             services.AddTransient<ITurmaDomainService, TurmaDomainService>();
+            services.AddTransient<IUsuarioDomainService, UsuarioDomainService>();
 
             services.AddTransient<IAlunoRepository, AlunoRepository>();
             services.AddTransient<IMatriculaRepository, MatriculaRepository>();
             services.AddTransient<IProfessorRepository, ProfessorRepository>();
             services.AddTransient<ITurmaRepository, TurmaRepository>();
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
-            //services.AddTransient<IMD5Cryptography, MD5Cryptography>();
+            services.AddTransient<IMD5Cryptography, MD5Cryptography>();
 
             #endregion
         }
