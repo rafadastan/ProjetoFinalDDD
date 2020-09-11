@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Projeto.Application.Contracts;
 using Projeto.Application.Services;
@@ -21,6 +24,7 @@ using Projeto.Domain.Services;
 using Projeto.Infra.Data.Contexts;
 using Projeto.Infra.Data.Contracts;
 using Projeto.Infra.Data.Repositories;
+using Projeto.Presentation.Api.Authorization;
 
 namespace Projeto.Presentation.Api
 {
@@ -47,7 +51,7 @@ namespace Projeto.Presentation.Api
                     Title = "API de controle de escolas e cursos",
                     Version = "v1",
                     Description = "Sistema desenvolvido em NET CORE API com arquitetura DDD(Domain Driven Design)",
-        
+
                     Contact = new OpenApiContact
                     {
                         Name = "COTI Informática",
@@ -55,7 +59,32 @@ namespace Projeto.Presentation.Api
                         Email = "contato@cotiinformatica.com.br"
                     }
                 };
+
+            s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = ""
             });
+            s.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[]{ }
+                }
+            });
+        });
+        
             #endregion
 
             #region EntityFramework
@@ -91,6 +120,37 @@ namespace Projeto.Presentation.Api
             services.AddTransient<IMD5Cryptography, MD5Cryptography>();
 
             #endregion
+
+            #region JWT
+            //injeção de dependência da classe JwtSettings
+            var settingsSection = Configuration.GetSection("JwtSettings");
+            services.Configure<JwtSettings>(settingsSection);
+            //obtendo a chave secreta para criação do TOKEN
+            var jwtSettings = settingsSection.Get<JwtSettings>();
+            var key = Encoding.ASCII.GetBytes(jwtSettings.SecretKey);
+            //configurando o projeto para usar o framework JWT
+            services.AddAuthentication(
+                auth =>
+                {
+                    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(
+                    bearer =>
+                    {
+                        bearer.RequireHttpsMetadata = false;
+                        bearer.SaveToken = true;
+                        bearer.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                }
+            );
+            services.AddTransient(map => new JwtConfiguration(jwtSettings));
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -103,6 +163,7 @@ namespace Projeto.Presentation.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             #region Swagger

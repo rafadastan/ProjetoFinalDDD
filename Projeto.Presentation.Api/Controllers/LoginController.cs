@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.Contracts;
 using Projeto.Application.Models;
+using Projeto.Presentation.Api.Authorization;
 
 namespace Projeto.Presentation.Api.Controllers
 {
@@ -15,7 +16,8 @@ namespace Projeto.Presentation.Api.Controllers
     {
         [HttpPost]
         public IActionResult post(UsuarioAutenticacaoModel model,
-            [FromServices] IUsuarioApplicationService usuarioApplicationService)
+            [FromServices] IUsuarioApplicationService usuarioApplicationService,
+            [FromServices] JwtConfiguration jwtConfiguration)
         {
             try
             {
@@ -24,7 +26,7 @@ namespace Projeto.Presentation.Api.Controllers
 
                 if (usuario != null) 
                 {
-                    return Ok("TOKEN!");
+                    return Ok(jwtConfiguration.GenerateToken(usuario.Login));
                 }
                 else
                 {
