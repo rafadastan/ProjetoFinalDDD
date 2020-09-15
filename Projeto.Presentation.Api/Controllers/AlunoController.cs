@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projeto.Application.Contracts;
@@ -12,6 +13,7 @@ using Projeto.Infra.Data.Contracts;
 
 namespace Projeto.Presentation.Api.Controllers
 {
+    [EnableCors("DefaultPolicy")]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

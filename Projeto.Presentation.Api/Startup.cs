@@ -151,6 +151,17 @@ namespace Projeto.Presentation.Api
             );
             services.AddTransient(map => new JwtConfiguration(jwtSettings));
             #endregion
+
+            #region CORS
+            services.AddCors(s => s.AddPolicy("DefaultPolicy",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                })
+            );
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -162,6 +173,10 @@ namespace Projeto.Presentation.Api
             }
 
             app.UseRouting();
+
+            #region CORS
+            app.UseCors("DefaultPolicy");
+            #endregion
 
             app.UseAuthentication();
             app.UseAuthorization();
