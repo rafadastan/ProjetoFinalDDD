@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
 using Projeto.Application.Models;
 using Projeto.Presentation.Api.Tests.Contexts;
+using Projeto.Presentation.Api.Tests.Factories;
+using Projeto.Presentation.Api.Tests.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,54 +18,63 @@ namespace Projeto.Presentation.Api.Tests.Scenarios
 {
     public class UsuarioTest
     {
-        private TestContext testContext;
-        private string endpoint;
+        private readonly TestContext testContext;
+        private readonly string endpoint;
+        private readonly string createUserMessage;
+        private readonly string errorLoginMessage;
 
         public UsuarioTest()
         {
             testContext = new TestContext();
             endpoint = "api/usuario";
+
+            createUserMessage = "Usuário cadastrado com sucesso.";
+            errorLoginMessage = "Erro. O login informado já encontra-se cadastrado.";
         }
 
         [Fact]
         public async Task Usuario_Post_ReturnsOk()
         {
-            var random = new Random();
-            var login = "raphael" + random.Next(999999);
-
-            var model = new UsuarioCadastroModel
-            {
-                Nome = "Raphael Augusto Pereira de Assis",
-                Login = login,
-                Senha = "adminadmin",
-                SenhaConfirmacao = "adminadmin"
-            };
-
-            var json = JsonConvert.SerializeObject(model);
-            var request = new StringContent(json, Encoding.UTF8, "application/json");
+            var request = ServicesUtil.CreateRequestContent(UsuarioFactory.CreateUsuario);
 
             var response = await testContext.Client.PostAsync(endpoint, request);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var message = ServicesUtil.ReadResponseMessage(response);
+            message.Should().Be(createUserMessage);
         }
 
         [Fact]
         public async Task Usuario_Post_BadRequest()
         {
-            var model = new UsuarioCadastroModel
-            {
-                Nome = string.Empty,
-                Login = string.Empty,
-                Senha = string.Empty,
-                SenhaConfirmacao = string.Empty
-            };
-
-            var json = JsonConvert.SerializeObject(model);
-            var request = new StringContent(json, Encoding.UTF8, "application/json");
+            var request = ServicesUtil.CreateRequestContent(UsuarioFactory.CreateUsuarioEmpty);
 
             var response = await testContext.Client.PostAsync(endpoint, request);
 
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        }
+
+        [Fact]
+        public async Task Usuario_Internal_Server_Error()
+        {
+            var request = ServicesUtil.CreateRequestContent(UsuarioFactory.CreateUsuario);
+
+            var responseSuccess = await testContext.Client.PostAsync(endpoint, request);
+
+            responseSuccess.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var messageSuccess = ServicesUtil.ReadResponseMessage(responseSuccess);
+
+            messageSuccess.Should().Be(createUserMessage);
+
+            var responseError = await testContext.Client.PostAsync(endpoint, request);
+
+            responseError.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
+
+            var messageError = ServicesUtil.ReadResponseMessage(responseError);
+
+            messageError.Should().Be(errorLoginMessage);
         }
     }
 }

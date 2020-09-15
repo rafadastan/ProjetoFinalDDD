@@ -27,7 +27,6 @@ namespace Projeto.Presentation.Api.Controllers
             try
             {
                 alunoApplicationService.Insert(model); 
-                //retornar status de sucesso 200 (OK)
                 return Ok("Aluno cadastrado com sucesso.");
             }
             catch (Exception e)
@@ -43,7 +42,6 @@ namespace Projeto.Presentation.Api.Controllers
             try
             {
                 alunoApplicationService.Update(model);
-                //retornar status de atualizado 200 (OK)
                 return Ok("Aluno atualizado com sucesso.");
             }
             catch (Exception e)
@@ -59,7 +57,6 @@ namespace Projeto.Presentation.Api.Controllers
             try
             {
                 alunoApplicationService.Delete(id);
-                //retornar status de sucesso 200 (OK)
                 return Ok("Aluno deletado com sucesso.");
             }
             catch (Exception e)
@@ -74,7 +71,6 @@ namespace Projeto.Presentation.Api.Controllers
         {
             try
             {
-                //retornar status de sucesso 200 (OK)
                 return Ok(alunoApplicationService.GetAll());
             }
             catch (Exception e)
@@ -89,7 +85,6 @@ namespace Projeto.Presentation.Api.Controllers
         {
             try
             {
-                //retornar status de sucesso 200 (OK)
                 return Ok(alunoApplicationService.GetById(id));
             }
             catch (Exception e)
