@@ -1,7 +1,6 @@
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Domain\bin\Debug\netcoreapp3.1\Projeto.Domain.deps.json
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Domain\bin\Debug\netcoreapp3.1\Projeto.Domain.dll
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Domain\bin\Debug\netcoreapp3.1\Projeto.Domain.pdb
-C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Domain\obj\Debug\netcoreapp3.1\Projeto.Domain.csprojAssemblyReference.cache
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Domain\obj\Debug\netcoreapp3.1\Projeto.Domain.AssemblyInfoInputs.cache
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Domain\obj\Debug\netcoreapp3.1\Projeto.Domain.AssemblyInfo.cs
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Domain\obj\Debug\netcoreapp3.1\Projeto.Domain.csproj.CoreCompileInputs.cache

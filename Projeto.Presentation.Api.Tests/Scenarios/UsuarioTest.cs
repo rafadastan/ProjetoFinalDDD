@@ -29,7 +29,7 @@ namespace Projeto.Presentation.Api.Tests.Scenarios
             endpoint = "api/usuario";
 
             createUserMessage = "Usuário cadastrado com sucesso.";
-            errorLoginMessage = "Erro. O login informado já encontra-se cadastrado.";
+            errorLoginMessage = "Erro. O login informado já encontra - se cadastrado.";
         }
 
         [Fact]
@@ -58,11 +58,17 @@ namespace Projeto.Presentation.Api.Tests.Scenarios
         [Fact]
         public async Task Usuario_Internal_Server_Error()
         {
+            #region Status OK 200
+          
             var request = ServicesUtil.CreateRequestContent(UsuarioFactory.CreateUsuario);
 
             var responseSuccess = await testContext.Client.PostAsync(endpoint, request);
 
             responseSuccess.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            #endregion
+
+            #region Status Internal server error 500
 
             var messageSuccess = ServicesUtil.ReadResponseMessage(responseSuccess);
 
@@ -75,6 +81,8 @@ namespace Projeto.Presentation.Api.Tests.Scenarios
             var messageError = ServicesUtil.ReadResponseMessage(responseError);
 
             messageError.Should().Be(errorLoginMessage);
+
+            #endregion
         }
     }
 }

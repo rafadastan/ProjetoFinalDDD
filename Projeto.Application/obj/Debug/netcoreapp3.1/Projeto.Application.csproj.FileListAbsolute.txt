@@ -1,12 +1,12 @@
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\bin\Debug\netcoreapp3.1\Projeto.Application.deps.json
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\bin\Debug\netcoreapp3.1\Projeto.Application.dll
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\bin\Debug\netcoreapp3.1\Projeto.Application.pdb
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\bin\Debug\netcoreapp3.1\Projeto.Domain.dll
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\bin\Debug\netcoreapp3.1\Projeto.Domain.pdb
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.csprojAssemblyReference.cache
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.AssemblyInfoInputs.cache
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.AssemblyInfo.cs
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.csproj.CoreCompileInputs.cache
+C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.csproj.CopyComplete
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.dll
 C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.pdb
-C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\bin\Debug\netcoreapp3.1\Projeto.Domain.dll
-C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\bin\Debug\netcoreapp3.1\Projeto.Domain.pdb
-C:\Users\Raphael\Documents\Projetos\ProjetoFinal\Projeto.Application\obj\Debug\netcoreapp3.1\Projeto.Application.csproj.CopyComplete
